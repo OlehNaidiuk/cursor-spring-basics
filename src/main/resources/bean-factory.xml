@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util
+            https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:component-scan base-package="com.naidiuk.xml_configuration"/>
+
+    <bean id="capriceNo24" class="com.naidiuk.xml_configuration.entity.MusicTrack">
+        <property name="artist" value="Niccolo Paganini"/>
+        <property name="trackName" value="CapriceNo24"/>
+    </bean>
+
+    <bean id="winter" class="com.naidiuk.xml_configuration.entity.MusicTrack">
+        <property name="artist" value="Antonio Vivaldi"/>
+        <property name="trackName" value="Winter"/>
+    </bean>
+
+    <bean id="uprising" class="com.naidiuk.xml_configuration.entity.MusicTrack">
+        <property name="artist" value="Muse"/>
+        <property name="trackName" value="Uprising"/>
+    </bean>
+
+    <bean id="calm" class="com.naidiuk.xml_configuration.entity.MusicTrack">
+        <property name="artist" value="Ария"/>
+        <property name="trackName" value="Штиль"/>
+    </bean>
+
+    <util:list id="classicalTracks"
+               value-type="com.naidiuk.xml_configuration.entity.MusicTrack">
+        <ref bean="capriceNo24"/>
+        <ref bean="winter"/>
+    </util:list>
+
+    <util:list id="rockTracks"
+               value-type="com.naidiuk.xml_configuration.entity.MusicTrack">
+        <ref bean="uprising"/>
+        <ref bean="calm"/>
+    </util:list>
+
+    <bean id="classicalMusicPlayerService"
+          class="com.naidiuk.xml_configuration.service.ClassicalMusicPlayerServiceImpl">
+        <constructor-arg ref="classicalTracks"/>
+    </bean>
+
+    <bean id="rockMusicPlayerService" class="com.naidiuk.xml_configuration.service.RockMusicPlayerServiceImpl">
+        <constructor-arg ref="rockTracks"/>
+    </bean>
+
+    <bean id="musicPlayerServiceBean" class="com.naidiuk.xml_configuration.service.MusicPlayerServiceImpl">
+        <constructor-arg>
+            <list>
+                <ref bean="classicalMusicPlayerService"/>
+                <ref bean="rockMusicPlayerService"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
