@@ -1,9 +1,14 @@
 package com.naidiuk.annotation_configuration.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class MusicPlayerServiceImpl implements MusicPlayerService {
     private final ClassicalMusicPlayerService classicalMusicPlayerService;
     private final RockMusicPlayerService rockMusicPlayerService;
 
+    @Autowired
     public MusicPlayerServiceImpl(ClassicalMusicPlayerService classicalMusicPlayerService,
                                   RockMusicPlayerService rockMusicPlayerService) {
         this.classicalMusicPlayerService = classicalMusicPlayerService;

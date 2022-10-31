@@ -1,7 +1,7 @@
-package com.naidiuk.annotation_configuration.configuration;
+package com.naidiuk.java_configuration.configuration;
 
-import com.naidiuk.annotation_configuration.entity.MusicTrack;
-import com.naidiuk.annotation_configuration.service.*;
+import com.naidiuk.java_configuration.entity.MusicTrack;
+import com.naidiuk.java_configuration.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-@ComponentScan(basePackages = "com.naidiuk.annotation_configuration")
+@ComponentScan(basePackages = "com.naidiuk.java_configuration")
 public class MusicAppConfiguration {
     @Bean
     public MusicTrack capriceNo24() {

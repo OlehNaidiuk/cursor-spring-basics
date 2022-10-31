@@ -1,27 +1,14 @@
 package com.naidiuk.java_configuration.service;
 
 import com.naidiuk.java_configuration.entity.MusicTrack;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.Arrays;
 import java.util.List;
 
-@Service
 public class RockMusicPlayerServiceImpl implements RockMusicPlayerService {
-    private List<MusicTrack> rockTracks;
+    private final List<MusicTrack> rockTracks;
 
-    @PostConstruct
-    public void init() {
-        MusicTrack uprising = new MusicTrack();
-        uprising.setArtist("Muse");
-        uprising.setTrackName("Uprising");
-
-        MusicTrack calm = new MusicTrack();
-        calm.setArtist("Ария");
-        calm.setTrackName("Штиль");
-
-        rockTracks = Arrays.asList(uprising, calm);
+    public RockMusicPlayerServiceImpl(List<MusicTrack> rockTracks) {
+        this.rockTracks = rockTracks;
     }
 
     @Override
